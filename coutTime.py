@@ -34,22 +34,21 @@ def calculate_time():
     for date, timestamp, duration, category in data:
         # Convert date to datetime object
         date_obj = datetime.strptime(date, "%Y-%m-%d")
-        
         # Convert duration to seconds
         duration = int(duration)
 
-        if date_obj.isocalendar()[1] == datetime.now().isocalendar()[1]:
+        if category == 'w' and date_obj.isocalendar()[1] == datetime.now().isocalendar()[1]:
             week_sec += duration 
-        if date_obj.month == datetime.now().month:
+        if category == 'w' and date_obj.month == datetime.now().month:
             month_sec += duration
-        if date_obj.year == datetime.now().year:
+        if category == 'w' and date_obj.year == datetime.now().year:
             year_sec += duration
 
         # Calculate last month
         last_month = datetime.now().month - 1 if datetime.now().month != 1 else 12
-        if date_obj.month == last_month:
+        if category == 'w' and date_obj.month == last_month:
             last_month_sec += duration
-    
+
     # Convert seconds to hours and days, round to 2 decimal places
     week_hrs = round(week_sec / 3600, 2)
     month_hrs = round(month_sec / 3600, 2)
