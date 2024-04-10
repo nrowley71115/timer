@@ -37,11 +37,19 @@ def calculate_time():
         # Convert duration to seconds
         duration = int(duration)
 
-        if category == 'w' and date_obj.isocalendar()[1] == datetime.now().isocalendar()[1]:
+        # Calculate this week
+        this_week = datetime.now().isocalendar()[1]
+        if category == 'w' and date_obj.isocalendar()[1] == this_week:
             week_sec += duration 
-        if category == 'w' and date_obj.month == datetime.now().month:
+
+        # Calculate this month
+        this_month = datetime.now().month
+        if category == 'w' and date_obj.month == this_month:
             month_sec += duration
-        if category == 'w' and date_obj.year == datetime.now().year:
+
+        # Calculate this year
+        this_year = datetime.now().year
+        if category == 'w' and date_obj.year == this_year:
             year_sec += duration
 
         # Calculate last month
