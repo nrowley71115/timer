@@ -3,6 +3,7 @@ import csv
 import datetime
 import sys
 import time
+import subprocess # used for the 'say' command
 
 # CONSTANTS
 CSV_FILE = "timer.csv"
@@ -40,8 +41,10 @@ def start_timer(seconds, work_type):
         sys.stdout.write(f"{remaining} seconds")
         sys.stdout.flush()
         time.sleep(1)
+
     sys.stdout.write("\rThe timer has completed!                     \n")
-    
+    subprocess.run(['say', 'The timer has completed!'])
+
     log_to_csv(seconds, work_type)
 
 def log_to_csv(duration, work_type):
