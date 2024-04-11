@@ -43,7 +43,7 @@ def start_timer(seconds, work_type):
         time.sleep(1)
 
     sys.stdout.write("\rThe timer has completed!                     \n")
-    subprocess.run(['say', 'The timer has completed!'])
+    subprocess.run(['say', 'completed!'])
 
     log_to_csv(seconds, work_type)
 
